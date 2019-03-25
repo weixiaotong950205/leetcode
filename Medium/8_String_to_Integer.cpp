@@ -96,8 +96,6 @@ private:
 
 int main() {
 	Solution solu;
-	string s = "+000000liyang";
-	//cout << s.find_first_not_of('0');
 	cout << solu.myAtoi("42") << endl;
 	system("pause");
 }

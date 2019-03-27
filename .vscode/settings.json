@@ -1,0 +1,9 @@
+{
+    "code-runner.executorMap": {
+    "cpp": "cd $dir && g++ $fileName -o c:\\MinGw\\bin\\vs_temp -std=c++11 && c:\\MinGw\\bin\\vs_temp"
+    },
+    "files.associations": {
+    "typeinfo": "cpp"
+    },
+}
+  

@@ -35,7 +35,7 @@ public:
         int first=nums[0],last=nums[len-1];
         if(first<=last){                                    //如果没有旋转，直接用二分法寻找
             auto it=lower_bound(nums.begin(),nums.end(),target);
-            return it==nums.end()||*it>target ? -1 : it-nums.begin(); //此处为考虑it为end()的情况
+            return it==nums.end()||*it>target ? -1 : it-nums.begin(); //此处未考虑it为end()的情况
         }
         int low=0,high=len-1,middle;
         while(high-low>1){      //二分法找枢值

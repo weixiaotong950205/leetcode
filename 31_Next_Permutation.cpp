@@ -16,10 +16,12 @@
 
 using namespace std;
 
+
+//使用了stl的库函数，具体实现还要手写一下
 class Solution {
 public:
     void nextPermutation(vector<int>& nums) {
-        std::next_permutation(nums.begin(),nums.end());
+        std::next_permutation(nums.begin(),nums.end()); 
     }
 };
 

@@ -29,36 +29,37 @@ using namespace std;
 //     }
 // };
 
+//copy_backward使用错误，第三个参数应该是输入容器的尾迭代器,20190405
 class Solution {    //尝试优化
 public:
-    void merge(vector<int>& nums1, int m, vector<int>& nums2, int n) {
-       //同时排除空数组的情况
-       if(n==0) return;
-       if(m==0){
-         std::copy(nums2.begin(),nums2.end(),nums1.begin()); 
-         return ;
-       }
-       if(nums2[0]>=nums1[m-1]){//如果nums2可以直接放到nums1的后面
-            std::copy(nums2.begin(),nums2.end(),nums1.begin()+m); 
-            return;
-       }
-       if(nums2[n-1]<=nums1[0]){  //如果nums2可以直接放到nums1的前面
-            std::copy_backward(nums1.begin(),nums1.begin()+m,nums1.begin()+m-1);
-            std::copy(nums2.begin(),nums2.end(),nums1.begin());
-            return;
-       }
-       //参考其他人的答案，可从后往前合并
-       int i=m-1,j=n-1,cur=m+n-1;
-       while(i>=0&&j>=0)
-       {
-            if(nums2[j]>nums1[i])
-                nums1[cur--]=nums2[j--];
-            else
-                nums1[cur--]=nums1[i--];
-       }
-       if(j<0) return;
-       copy(nums2.begin(),nums2.begin()+j+1,nums1.begin());
-    }
+	void merge(vector<int>& nums1, int m, vector<int>& nums2, int n) {
+		//同时排除空数组的情况
+		if (n == 0) return;
+		if (m == 0) {
+			std::copy(nums2.begin(), nums2.end(), nums1.begin());
+			return;
+		}
+		if (nums2[0] >= nums1[m - 1]) {//如果nums2可以直接放到nums1的后面
+			std::copy(nums2.begin(), nums2.end(), nums1.begin() + m);
+			return;
+		}
+		if (nums2[n - 1] <= nums1[0]) {  //如果nums2可以直接放到nums1的前面
+			std::copy_backward(nums1.begin(), nums1.begin() + m, nums1.end());
+			std::copy(nums2.begin(), nums2.end(), nums1.begin());
+			return;
+		}
+		//参考其他人的答案，可从后往前合并
+		int i = m - 1, j = n - 1, cur = m + n - 1;
+		while (i >= 0 && j >= 0)
+		{
+			if (nums2[j]>nums1[i])
+				nums1[cur--] = nums2[j--];
+			else
+				nums1[cur--] = nums1[i--];
+		}
+		if (j<0) return;
+		copy(nums2.begin(), nums2.begin() + j + 1, nums1.begin());
+	}
 };
 
 int main(){

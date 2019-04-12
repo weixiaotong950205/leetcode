@@ -58,7 +58,7 @@ private:
             ans.push_back(temp);
             return;
         }
-        if(left_remain>right_remain)
+        if(left_remain>right_remain)//右括号用得比左括号多的时候，一定不合法
             return;
         if(left_remain>0)
             bacctrack(temp+"(",ans,left_remain-1,right_remain);
